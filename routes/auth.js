@@ -10,14 +10,14 @@ router.get('/register', function (req, res) {
 })
 
 router.post('/register', function (req, res) {
-    let { name, email, password, ffname } = req.body;
+    let { name, email, username, password, ffname } = req.body;
     bcrypt.genSalt(10, function (err, salt) {
         bcrypt.hash(password, salt, async function (err, hash) {
             if (err) {
                 res.send(err.message)
                 res.redirect('/register');
             } else {
-                let user = await userModel.create({ name, email, password: hash, ffname });
+                let user = await userModel.create({ name, username, email, password: hash, ffname });
                 let token = generateToken(user);
                 res.cookie("token", token);
                 res.redirect('../home');

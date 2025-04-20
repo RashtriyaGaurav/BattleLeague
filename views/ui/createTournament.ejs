@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/fonts.css">
+</head>
+
+<body class="bg-[#050506]">
+    <div class="text-3xl font-semibold text-white p-4">
+        <h1>Create Tournament </h1>
+    </div>
+
+    <div class="flex flex-col gap-3 mb-24 text-white mx-4 border border-zinc-800">
+
+        <form action="/createTournament/<user._id>" method="POST" class="flex flex-col p-3">
+
+            <label class="text-xl mb-1">Select Banner Image</label>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-2">
+                <label class="cursor-pointer">
+                    <input type="radio" name="banner" value="/images/banner1.jpg" class="hidden peer" required>
+                    <img src="/images/banner1.jpg" alt="Banner 1" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" name="banner" value="/images/banner2.jpg" class="hidden peer">
+                    <img src="/images/banner2.jpg" alt="Banner 2" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <img src="/images/banner3.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <img src="/images/banner4.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <img src="/images/banner5.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <img src="/images/banner6.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <img src="/images/banner7.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <img src="/images/banner8.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <img src="/images/banner9.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
+                </label>
+                <label class="cursor-pointer">
+                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <img src="/images/banner10.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
+                </label>
+            </div>
+
+            <label  for="title" class="text-xl mb-1">Tournament Title</label>
+            <input type="text" name="title" id="title" class="border border-zinc-800 bg-transparent p-2" required>
+
+            <label for="description" class="text-xl mt-2 mb-1">Description / Rules</label>
+            <textarea name="description" id="description" rows="8" class="border border-zinc-800 bg-transparent p-2"></textarea>
+
+            <label for="matchType" class="text-xl mt-2 mb-1">Match Type</label>
+            <select name="matchType" id="matchType" required onchange="updatePlayersOptions() " class="border border-zinc-800 bg-transparent p-2">
+                <option value="">-- Select Match Type --</option>
+                <option value="solo-full-map">Solo Full Map Bermuda</option>
+                <option value="solo-lone-wolf">Lone Wolf 1 VS 1</option>
+                <option value="clash-squad-1v1">Clash Squad 1 VS 1 (Unlimited Gloo)</option>
+            </select>
+
+            <label for="players" class="text-xl mt-2 mb-1">Players</label>
+            <select name="players" id="players" required class="border border-zinc-800 bg-transparent p-2">
+                <option value="" class="bg-blue-600">-- Select Players --</option>
+            </select>
+
+            <label for="tDate" class="text-xl mt-2 mb-1">Tournament Date</label>
+            <input type="date" name="tDate" class="border border-zinc-800 bg-transparent p-2">
+
+            <label for="tTime" class="text-xl mt-2 mb-1">Tournament Time</label>
+            <input type="time" name="tTime" class="border border-zinc-800 bg-transparent p-2">
+
+            <label for="createdBy" class="text-xl mt-2 mb-1">created by</label>
+            <input type="text" name="createdBy" class="border border-zinc-800 bg-transparent p-2" value=<%=user.username%> readonly>
+
+            <input type="submit" value="Create Tournament" class=" bg-blue-600 mt-3 p-2">
+        </form>
+    </div>
+
+    <footer class="fixed bottom-0 left-0 right-0 flex justify-around bg-[#050506] py-2 z-50 border-t border-white/20">
+        <!-- Home -->
+        <a href="/home"
+            class="w-12 h-12 text-zinc-300 flex items-center justify-center  rounded-xl">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+            </svg>
+        </a>
+
+        <!-- Wallet -->
+        <a href="/wallet"
+            class="w-12 h-12 rounded-xl text-zinc-300 flex items-center justify-center ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+            </svg>
+        </a>
+
+        <a href="/createTournament"
+            class="w-12 h-12 rounded-xl text-zinc-300 flex items-center justify-center bg-white/20">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+
+        </a>
+
+        <!-- World Chat -->
+        <a href="/worldChat"
+            class="w-12 h-12 rounded-xl  text-zinc-300 flex items-center justify-center">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+            </svg>
+        </a>
+
+        <!-- Profile -->
+        <a href="/profile"
+            class="w-12 h-12 rounded-xl text-zinc-300 flex items-center justify-center ">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            </svg>
+        </a>
+    </footer>
+
+
+    <script>
+        function updatePlayersOptions() {
+            const matchType = document.getElementById('matchType').value;
+            const playersSelect = document.getElementById('players');
+            playersSelect.innerHTML = '';
+
+            if (matchType === 'solo-full-map') {
+                ['20', '32', '48'].forEach(num => {
+                    const opt = document.createElement('option');
+                    opt.value = num;
+                    opt.textContent = `${num} Players`;
+                    playersSelect.appendChild(opt);
+                });
+            } else if (matchType === 'solo-lone-wolf' || matchType === 'clash-squad-1v1') {
+                const opt = document.createElement('option');
+                opt.value = '2';
+                opt.textContent = '2 Players';
+                playersSelect.appendChild(opt);
+            }
+        }
+    </script>
+</body>
+
+</html>
