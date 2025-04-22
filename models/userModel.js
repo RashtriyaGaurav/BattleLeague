@@ -32,6 +32,10 @@ const userSchema = mongoose.Schema({
     tournaments: {
         type: Array,
         default: []
+    },
+    followers:{
+        type: Array,
+        default: []
     }
 });
 

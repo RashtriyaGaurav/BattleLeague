@@ -33,31 +33,31 @@
                     <img src="/images/banner3.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
                 </label>
                 <label class="cursor-pointer">
-                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <input type="radio" name="banner" value="/images/banner4.jpg" class="hidden peer">
                     <img src="/images/banner4.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
                 </label>
                 <label class="cursor-pointer">
-                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <input type="radio" name="banner" value="/images/banner5.jpg" class="hidden peer">
                     <img src="/images/banner5.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
                 </label>
                 <label class="cursor-pointer">
-                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <input type="radio" name="banner" value="/images/banner6.jpg" class="hidden peer">
                     <img src="/images/banner6.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
                 </label>
                 <label class="cursor-pointer">
-                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <input type="radio" name="banner" value="/images/banner7.jpg" class="hidden peer">
                     <img src="/images/banner7.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
                 </label>
                 <label class="cursor-pointer">
-                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <input type="radio" name="banner" value="/images/banner8.jpg" class="hidden peer">
                     <img src="/images/banner8.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
                 </label>
                 <label class="cursor-pointer">
-                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <input type="radio" name="banner" value="/images/banner9.jpg" class="hidden peer">
                     <img src="/images/banner9.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
                 </label>
                 <label class="cursor-pointer">
-                    <input type="radio" name="banner" value="/images/banner3.jpg" class="hidden peer">
+                    <input type="radio" name="banner" value="/images/banner10.jpg" class="hidden peer">
                     <img src="/images/banner10.jpg" alt="Banner 3" class="w-full h-24 object-cover rounded-md border-2 border-transparent peer-checked:border-blue-500 transition">
                 </label>
             </div>
@@ -82,10 +82,10 @@
             </select>
 
             <label for="tDate" class="text-xl mt-2 mb-1">Tournament Date</label>
-            <input type="date" name="tDate" class="border border-zinc-800 bg-transparent p-2">
+            <input type="text" name="tDate" class="border border-zinc-800 bg-transparent p-2" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" >
 
             <label for="tTime" class="text-xl mt-2 mb-1">Tournament Time</label>
-            <input type="time" name="tTime" class="border border-zinc-800 bg-transparent p-2">
+            <input type="text" name="tTime" class="border border-zinc-800 bg-transparent p-2" placeholder="HH:MM AM/PM" pattern="\d{1,2}:\d{2} (AM|PM)">
 
             <label for="createdBy" class="text-xl mt-2 mb-1">created by</label>
             <input type="text" name="createdBy" class="border border-zinc-800 bg-transparent p-2" value=<%=user.username%> readonly>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/fonts.css">
+</head>
+
+<body class="bg-[#050506] text-white">
+    <div class="text-3xl font-semibold p-4">
+        <h1>Followers List</h1>
+    </div>
+
+    <div class="p-4 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        <!-- Follower Card 1 -->
+        <% users.forEach(function(user){ %>
+            <div class=" border border-zinc-800 p-4 flex items-center space-x-4 hover:bg-[#2a2a2e] transition">
+                <div
+                    class="h-10 w-10 border bg-blue-600 border-zinc-800 rounded-2xl flex justify-center items-center text-3xl">
+                    <h1 class="mb-1">
+                        <%=user[0]%>
+                    </h1>
+                </div>
+                <div class="">
+                    <h1 class="text-lg font-semibold">
+                        <%=user%>
+                    </h1>
+                    <!-- <h1 class="text-zinc-400">@Rashtriya
+                    </h1> -->
+                </div>
+            </div>
+            <% }) %>
+
+
+                <!-- More cards can be added here -->
+    </div>
+</body>
+
+</html>

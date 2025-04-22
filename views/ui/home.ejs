@@ -17,14 +17,14 @@
     <div class="flex flex-col gap-3 mb-24">
 <% if (tournaments.length > 0) { %>
         <% tournaments.forEach(function(tournament) { %>
-            <a href="" class="border border-zinc-800 mx-3 min-h-64">
+            <a href="/details/<%=tournament._id%>" class="border border-zinc-800 mx-3 min-h-64">
                 <!-- <h1 class="h-3"></h1> -->
                 <div class=" h-48 overflow-hidden">
                     <img class="object-cover h-full w-full" src=<%= tournament.banner %> alt="">
                 </div>
 
                 <div class="">
-                    <h1 class="text-lg text-white px-4 pt-1"><%= tournament.title %></h>
+                    <h1 class="text-lg text-white px-4 pt-2.5 font-semibold leading-none"><%= tournament.title %></h>
                         <h1 class="text-zinc-400 px-4 pb-2">@<%= tournament.createdBy %></h1>
                 </div>
             </a>
@@ -35,7 +35,7 @@
                 <p class="text-zinc-200/50 text-2xl text-center p-4">No tournaments found
                     </p>
 
-                    <a href="/createTournament" class="text-xl text-white bg-blue-600 border border-red-600 w-48 mx-auto text-center">Create tournaments publically
+                    <a href="/createTournament" class="text-xl text-white border border-zinc-800 py-2 px-5 mx-auto text-center">Create
                     </a>
                     <%}%>
     </div>

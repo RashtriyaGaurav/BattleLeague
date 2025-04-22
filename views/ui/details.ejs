@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/stylesheets/fonts.css">
+</head>
+
+<body class="bg-[#050506]">
+    <div href="" class="border border-zinc-800 m-3 min-h-64">
+        <!-- <h1 class="h-3"></h1> -->
+        <div class=" h-48 overflow-hidden">
+            <img class="object-cover h-full w-full" src=<%=tournament.banner %> alt="">
+        </div>
+
+        <div class="">
+            <h1 class="text-lg text-white px-4 pt-2.5 font-semibold leading-none"><%= tournament.title %></h>
+                <h1 class="text-zinc-400 px-4 pb-2">@<%= tournament.createdBy %></h1>
+        </div>
+    </div>
+
+    <div class="m-3 gap-2 flex flex-col">
+        <%if (tournament.matchType==='solo-full-map' ) {%>
+            <div class="flex justify-around">
+                <h1 class="p-2 text-white  w-1/2">Match Host</h1>
+                <h1 class="bg-blue-600 p-2 text-white w-1/2">
+                    <%= tournament.createdBy%>
+                </h1>
+            </div>
+            <div class="flex justify-around">
+                <h1 class="p-2 text-white  w-1/2">Match Type</h1>
+                <h1 class="bg-blue-600 p-2 text-white w-1/2">Solo Full Map Bermuda</h1>
+            </div>
+            <div class="flex justify-around">
+                <h1 class="p-2 text-white  w-1/2">Entry Fee</h1>
+                <h1 class="bg-blue-600 p-2 text-white w-1/2">10 Coins</h1>
+            </div>
+            <div class="flex justify-around">
+                <h1 class="p-2 text-white  w-1/2">Per Kill</h1>
+                <h1 class="bg-blue-600 p-2 text-white w-1/2">8 Coins</h1>
+            </div>
+            <div class="flex justify-around">
+                <h1 class="p-2 text-white  w-1/2">Max Players</h1>
+                <h1 class="bg-blue-600 p-2 text-white w-1/2">
+                    <%= tournament.players %>
+                </h1>
+            </div>
+            <div class="flex justify-around">
+                <h1 class="p-2 text-white  w-1/2">Tournament Date</h1>
+                <h1 class="bg-blue-600 p-2 text-white w-1/2">
+                    <%= tournament.tDate %>,<%= tournament.tTime %>
+                </h1>
+            </div>
+            <%} else if (tournament.matchType==='solo-lone-wolf' ) { %>
+                <div class="flex justify-around">
+                    <h1 class="p-2 text-white  w-1/2">Match Host</h1>
+                    <h1 class="bg-blue-600 p-2 text-white w-1/2">
+                        <%= tournament.createdBy%>
+                    </h1>
+                </div>
+                <div class="flex justify-around">
+                    <h1 class="p-2 text-white  w-1/2">Match Type</h1>
+                    <h1 class="bg-blue-600 p-2 text-white w-1/2">Solo Full Map Bermuda</h1>
+                </div>
+                <div class="flex justify-around">
+                    <h1 class="p-2 text-white  w-1/2">Entry Fee</h1>
+                    <h1 class="bg-blue-600 p-2 text-white w-1/2">10 Coins</h1>
+                </div>
+                <div class="flex justify-around">
+                    <h1 class="p-2 text-white  w-1/2">Per Kill</h1>
+                    <h1 class="bg-blue-600 p-2 text-white w-1/2">8 Coins</h1>
+                </div>
+                <div class="flex justify-around">
+                    <h1 class="p-2 text-white  w-1/2">Max Players</h1>
+                    <h1 class="bg-blue-600 p-2 text-white w-1/2">
+                        <%= tournament.players %>
+                    </h1>
+                </div>
+                <div class="flex justify-around">
+                    <h1 class="p-2 text-white  w-1/2">Tournament Date</h1>
+                    <h1 class="bg-blue-600 p-2 text-white w-1/2">
+                        <%= tournament.tDate %>,<%= tournament.tTime %>
+                    </h1>
+                </div>
+                <%} else if ( tournament.matchType==='clash-squad-1v1' ) { %>
+                    <div class="flex justify-around border border-zinc-800">
+                        <h1 class="p-2 text-white  w-1/2">Match Host</h1>
+                        <h1 class="bg-blue-600 p-2 text-white w-1/2">
+                            <%= tournament.createdBy%>
+                        </h1>
+                    </div>
+                    <div class="flex justify-around border border-zinc-800">
+                        <h1 class="p-2 text-white  w-1/2">Match Type</h1>
+                        <h1 class="bg-blue-600 p-2 text-white w-1/2">Clash Squad 1 VS 1 Bermuda</h1>
+                    </div>
+                    <div class="flex justify-around border border-zinc-800">
+                        <h1 class="p-2 text-white  w-1/2">Entry Fee</h1>
+                        <h1 class="bg-blue-600 p-2 text-white w-1/2">30 Coins</h1>
+                    </div>
+                    <div class="flex justify-around border border-zinc-800">
+                        <h1 class="p-2 text-white  w-1/2">Winning Prize</h1>
+                        <h1 class="bg-blue-600 p-2 text-white w-1/2">45 Coins</h1>
+                    </div>
+                    <div class="flex justify-around border border-zinc-800">
+                        <h1 class="p-2 text-white  w-1/2">Max Players</h1>
+                        <h1 class="bg-blue-600 p-2 text-white w-1/2">
+                            <%= tournament.players %>
+                        </h1>
+                    </div>
+                    <div class="flex justify-around border border-zinc-800">
+                        <h1 class="p-2 text-white  w-1/2">Tournament Date</h1>
+                        <h1 class="bg-blue-600 p-2 text-white w-1/2">
+                            <%= tournament.tDate %>,<%= tournament.tTime %>
+                        </h1>
+                    </div>
+                    <%}%>
+    </div>
+
+    <div class="bg-white my-3 flex mx-3">
+        <a href="" class="text-white bg-green-600 w-full py-2 text-center mx-auto ">Join Tournament</a>
+    </div>
+
+    <div class="border border-zinc-800 mb-9 mx-3 mt-3 ">
+        <h1 class="text-white text-2xl p-3">Description/Rules</h1>
+        <p class="text-zinc-300 p-3">
+            <%= tournament.description %>
+        </p>
+    </div>
+</body>
+
+</html>

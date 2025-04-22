@@ -22,7 +22,7 @@ const tShowSchema = mongoose.Schema({
     matchType: String,
     players: Number,
     tDate: {
-        type: Date
+        type: String
     },
     tTime: {
         type: String
