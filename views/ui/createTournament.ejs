@@ -14,9 +14,12 @@
         <h1>Create Tournament </h1>
     </div>
 
-    <div class="flex flex-col gap-3 mb-24 text-white mx-4 border border-zinc-800">
+    <hr class="h-[1px] mb-3 border-none outline-none bg-zinc-800 mx-3">
 
-        <form action="/createTournament/<user._id>" method="POST" class="flex flex-col p-3">
+
+    <div class="flex flex-col gap-3 mb-24 text-white mx-4 ">
+
+        <form action="/createTournament/<user._id>" method="POST" class="flex flex-col">
 
             <label class="text-xl mb-1">Select Banner Image</label>
             <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-2">
@@ -63,13 +66,13 @@
             </div>
 
             <label  for="title" class="text-xl mb-1">Tournament Title</label>
-            <input type="text" name="title" id="title" class="border border-zinc-800 bg-transparent p-2" required>
+            <input type="text" name="title" id="title" class="rounded-lg bg-zinc-900 p-2" required>
 
             <label for="description" class="text-xl mt-2 mb-1">Description / Rules</label>
-            <textarea name="description" id="description" rows="8" class="border border-zinc-800 bg-transparent p-2"></textarea>
+            <textarea name="description" id="description" rows="8" class="rounded-lg bg-zinc-900 p-2"></textarea>
 
             <label for="matchType" class="text-xl mt-2 mb-1">Match Type</label>
-            <select name="matchType" id="matchType" required onchange="updatePlayersOptions() " class="border border-zinc-800 bg-transparent p-2">
+            <select name="matchType" id="matchType" required onchange="updatePlayersOptions() " class="rounded-lg bg-zinc-900 p-2">
                 <option value="">-- Select Match Type --</option>
                 <option value="solo-full-map">Solo Full Map Bermuda</option>
                 <option value="solo-lone-wolf">Lone Wolf 1 VS 1</option>
@@ -77,20 +80,26 @@
             </select>
 
             <label for="players" class="text-xl mt-2 mb-1">Players</label>
-            <select name="players" id="players" required class="border border-zinc-800 bg-transparent p-2">
+            <select name="players" id="players" required class="rounded-lg bg-zinc-900 p-2">
                 <option value="" class="bg-blue-600">-- Select Players --</option>
             </select>
 
             <label for="tDate" class="text-xl mt-2 mb-1">Tournament Date</label>
-            <input type="text" name="tDate" class="border border-zinc-800 bg-transparent p-2" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" >
+            <input type="text" name="tDate" class="rounded-lg bg-zinc-900 p-2" placeholder="DD/MM/YYYY" pattern="\d{2}/\d{2}/\d{4}" >
 
             <label for="tTime" class="text-xl mt-2 mb-1">Tournament Time</label>
-            <input type="text" name="tTime" class="border border-zinc-800 bg-transparent p-2" placeholder="HH:MM AM/PM" pattern="\d{1,2}:\d{2} (AM|PM)">
+            <input type="text" name="tTime" class="rounded-lg bg-zinc-900 p-2" placeholder="HH:MM AM/PM" pattern="\d{1,2}:\d{2} (AM|PM)">
 
-            <label for="createdBy" class="text-xl mt-2 mb-1">created by</label>
-            <input type="text" name="createdBy" class="border border-zinc-800 bg-transparent p-2" value=<%=user.username%> readonly>
+            
+            <label for="entryFee" class="text-xl mt-2 mb-1">Entry Fee</label>
+            <input type="text" name="entryFee" class="rounded-lg bg-zinc-900 p-2" >
+            <label for="winPrize" class="text-xl mt-2 mb-1">Winnning Prize</label>
+            <input type="text" name="winPrize" class="rounded-lg bg-zinc-900 p-2" >
 
-            <input type="submit" value="Create Tournament" class=" bg-blue-600 mt-3 p-2">
+            <label for="createdBy" class="text-xl mt-2 mb-1">Created by</label>
+            <input type="text" name="createdBy" class="rounded-lg bg-zinc-900 p-2" value=<%=user.username%> readonly>
+
+            <input type="submit" value="Create Tournament" class=" bg-blue-600 rounded-lg mt-3 p-2">
         </form>
     </div>
 

@@ -14,12 +14,12 @@
         <h1>Battle League</h1>
     </div>
 
-    <div class="flex flex-col gap-3 mb-24">
+    <div class="flex flex-col gap-5 mb-24">
 <% if (tournaments.length > 0) { %>
         <% tournaments.forEach(function(tournament) { %>
-            <a href="/details/<%=tournament._id%>" class="border border-zinc-800 mx-3 min-h-64">
+            <a href="/details/<%=tournament._id%>" class=" mx-3 min-h-64">
                 <!-- <h1 class="h-3"></h1> -->
-                <div class=" h-48 overflow-hidden">
+                <div class=" h-48 overflow-hidden rounded-lg">
                     <img class="object-cover h-full w-full" src=<%= tournament.banner %> alt="">
                 </div>
 

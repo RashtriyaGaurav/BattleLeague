@@ -11,30 +11,48 @@
 
 <body class="bg-gradient-to-br from-zinc-900/95 to-[#050506]">
 
+    <% if (error) { %>
+    <div id="alert"
+        class="fixed top-3 left-1/2 transform -translate-x-1/2 bg-red-600 text-white px-6 py-3 rounded-lg shadow-lg z-50 transition duration-500">
+        <%= error %>
+    </div>
+    <% } %>
+
     <div class="flex justify-center items-center w-full h-screen text-white">
-        <div class="w-full max-w-md p-6 ">
+        <div class="w-full max-w-md p-6">
             <h1 class="text-4xl font-semibold">Battle League</h1>
             <h2 class="text-xl tracking-tighter mb-4 text-zinc-500">Register and feel the premium</h2>
 
-            <form action="" method="POST" class="space-y-4">
+            <form action="/auth/register" method="POST" class="space-y-4">
 
                 <input type="text" name="name" required placeholder="Fullname"
-                    class="w-full p-2 mt-1 bg-gray-700 text-white rounded-md ">
+                    class="w-full p-2 mt-1 bg-gray-700 text-white rounded-md">
                 <input type="text" name="ffname" required placeholder="Free Fire Id Name"
-                    class="w-full p-2 mt-1 bg-gray-700 text-white rounded-md ">
+                    class="w-full p-2 mt-1 bg-gray-700 text-white rounded-md">
                 <input type="text" name="username" required placeholder="Username"
-                    class="w-full p-2 mt-1 bg-gray-700 text-white rounded-md ">
+                    class="w-full p-2 mt-1 bg-gray-700 text-white rounded-md">
                 <input type="email" name="email" required placeholder="Email"
-                    class="w-full p-2 mt-1 bg-gray-700 text-white rounded-md ">
+                    class="w-full p-2 mt-1 bg-gray-700 text-white rounded-md">
                 <input type="password" name="password" required placeholder="Password"
-                    class="w-full p-2 mt-1 bg-gray-700 text-white rounded-md ">
+                    class="w-full p-2 mt-1 bg-gray-700 text-white rounded-md">
+
                 <input class="w-full bg-blue-500 text-black py-2 rounded-md" type="submit" value="Create Account">
                 <div class="text-white">Already have an account? <a href="/auth/login" class="text-blue-500">Login</a>
                 </div>
-
             </form>
         </div>
     </div>
+
+    <script>
+        // Auto hide alert after 3 seconds
+        setTimeout(() => {
+            const alert = document.getElementById('alert');
+            if (alert) {
+                alert.classList.add('opacity-0');
+                setTimeout(() => alert.remove(), 500);
+            }
+        }, 3000);
+    </script>
 </body>
 
 </html>

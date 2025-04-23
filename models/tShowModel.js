@@ -26,7 +26,9 @@ const tShowSchema = mongoose.Schema({
     },
     tTime: {
         type: String
-    }
+    },
+    entryFee:Number,
+    winPrize:Number
 
 
 });

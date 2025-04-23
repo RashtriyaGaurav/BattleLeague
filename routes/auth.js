@@ -6,25 +6,37 @@ const { generateToken } = require('../utils/generateToken');
 const router = express.Router();
 
 router.get('/register', function (req, res) {
-    res.render('auth/register');
-})
+    res.render('auth/register', { error: null });
+});
 
-router.post('/register', function (req, res) {
-    let { name, email, username, password, ffname } = req.body;
-    bcrypt.genSalt(10, function (err, salt) {
-        bcrypt.hash(password, salt, async function (err, hash) {
-            if (err) {
-                res.send(err.message)
-                res.redirect('/register');
-            } else {
-                let user = await userModel.create({ name, username, email, password: hash, ffname });
-                let token = generateToken(user);
-                res.cookie("token", token);
-                res.redirect('../home');
-            }
+
+router.post('/register', async function (req, res) {
+    try {
+        const { name, email, username, password, ffname } = req.body;
+
+        const existingUser = await userModel.findOne({ username });
+        if (existingUser) {
+            return res.render('auth/register', {
+                error: 'Username already exists!',
+            });
+        }
+
+        const salt = await bcrypt.genSalt(10);
+        const hash = await bcrypt.hash(password, salt);
+
+        const user = await userModel.create({ name, email, username, password: hash, ffname });
+
+        const token = generateToken(user);
+        res.cookie("token", token);
+        res.redirect('/home',{success: 'Registration successful!'});
+    } catch (err) {
+        res.render('auth/register', {
+            error: err.message
         });
-    });
-})
+    }
+});
+
+
 
 router.get('/login', function (req, res) {
     res.render('auth/login');

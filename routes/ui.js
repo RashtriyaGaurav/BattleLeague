@@ -23,13 +23,13 @@ router.get('/worldChat', isLoggedin, function (req, res) {
 })
 
 router.get('/profile', isLoggedin, function (req, res) {
-    res.render('ui/profile',{user:req.user});
+    res.render('ui/profile', { user: req.user });
 })
 
-router.get('/followersList', isLoggedin,async function (req, res) {
+router.get('/followersList', isLoggedin, async function (req, res) {
     const user = req.user;
     const users = user.followers
-    res.render('ui/followersList',{users});
+    res.render('ui/followersList', { users });
 })
 
 router.get('/createTournament', isLoggedin, function (req, res) {
@@ -37,8 +37,8 @@ router.get('/createTournament', isLoggedin, function (req, res) {
 })
 
 router.post('/createTournament/:userid', isLoggedin, async function (req, res) {
-    const { title, description, matchType, players, banner, createdBy, tDate, tTime } = req.body;
-    await tShowModel.create({ title, description, matchType, players, banner, createdBy, tDate, tTime });
+    const { title, description, matchType, players, banner, createdBy, tDate, tTime, entryFee, winPrize } = req.body;
+    await tShowModel.create({ title, description, matchType, players, banner, createdBy, entryFee, winPrize, tDate, tTime });
     res.render('ui/home')
 })
 
