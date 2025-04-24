@@ -21,14 +21,18 @@ const tShowSchema = mongoose.Schema({
     banner: String,
     matchType: String,
     players: Number,
+    playersJoined: {
+        type: Number,
+        default: 0
+    },
     tDate: {
         type: String
     },
     tTime: {
         type: String
     },
-    entryFee:Number,
-    winPrize:Number
+    entryFee: Number,
+    winPrize: Number
 
 
 });

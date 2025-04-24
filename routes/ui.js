@@ -18,6 +18,11 @@ router.get('/wallet', isLoggedin, function (req, res) {
     res.render('ui/wallet');
 })
 
+router.get('/hostedTournaments', isLoggedin,async function (req, res) {
+    let tournaments = req.user.tournaments;
+    res.render('ui/hostedTournaments',{tournaments});
+})
+
 router.get('/worldChat', isLoggedin, function (req, res) {
     res.render('ui/worldChat');
 })
@@ -38,7 +43,12 @@ router.get('/createTournament', isLoggedin, function (req, res) {
 
 router.post('/createTournament/:userid', isLoggedin, async function (req, res) {
     const { title, description, matchType, players, banner, createdBy, tDate, tTime, entryFee, winPrize } = req.body;
-    await tShowModel.create({ title, description, matchType, players, banner, createdBy, entryFee, winPrize, tDate, tTime });
+    let newTournament = await tShowModel.create({ title, description, matchType, players, banner, createdBy, entryFee, winPrize, tDate, tTime });
+
+    req.user.tournaments.push(newTournament);
+
+
+    await req.user.save();
     res.render('ui/home')
 })
 

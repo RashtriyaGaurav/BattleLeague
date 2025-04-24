@@ -1,266 +1,190 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>Profile</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="/stylesheets/fonts.css">
 </head>
-
-<body class="bg-[#050506]">
-
-    <div class="flex pt-5 px-5 pb-2 gap-2 items-center">
-        <div class="h-20 w-20 border bg-blue-600 border-zinc-800 rounded-3xl flex justify-center items-center text-3xl">
-            <h1 class="mb-1 text-white">
-                <%=user.name[0]%>
-            </h1>
-        </div>
-
-        <div class="leading-none">
-            <h1 class="text-2xl font-semibold text-white">
-                <%=user.name%>
-            </h1>
-            <h1 class="text-white mb-1.5">
-                @<%=user.username%>
-            </h1>
-            <h1 class="text-zinc-400 flex justify-between">
-                <%= user.followers.length %> followers
-                <div class="mx-3 mb-3 text-white ">
-                    <a href="/followersList" class="bg-gradient-to-r from-blue-500 to-blue-900 text-center rounded-lg px-3 ">List</a>
+<body class="bg-[#050506] text-white">
+    <!-- Profile Header -->
+    <div class="container mx-auto px-4 pt-8 pb-4">
+        <div class="flex items-center gap-4">
+            <div class="h-16 w-16 bg-gradient-to-br from-blue-500 to-blue-800 rounded-full flex items-center justify-center text-2xl font-bold border-2 border-zinc-700">
+                <h1><%= user.name[0] %></h1>
+            </div>
+            <div>
+                <h1 class="text-xl font-bold"><%= user.name %></h1>
+                <h2 class="text-sm text-zinc-400">@<%= user.username %></h2>
+                <div class="flex items-center gap-4 mt-1">
+                    <span class="text-sm text-zinc-400"><%= user.followers.length %> followers</span>
+                    <a href="/followersList" class="text-sm bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-full transition">View List</a>
                 </div>
-            </h1>
-
+            </div>
         </div>
-       
     </div>
 
-   
-
-    <div class="border border-zinc-800 rounded-lg text-white m-3 p-4 flex justify-between items-center">
-        <div class="ml-3">
-            <h1 class="">Wallet Balance</h1>
-            <h1 class="text-xl font-bold bg-gradient-to-r from-blue-500 to-blue-900 text-transparent bg-clip-text">
-                ₹ <%= user.coins %>
-            </h1>
+    <!-- Wallet Balance -->
+    <div class="container mx-auto px-4">
+        <div class="bg-zinc-900/50 border border-zinc-800 rounded-xl p-4 flex justify-between items-center">
+            <div>
+                <h3 class="text-sm text-zinc-400">Wallet Balance</h3>
+                <h2 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-blue-900 text-transparent bg-clip-text">
+                    ₹ <%= user.coins %>
+                </h2>
+            </div>
+            <a href="/addcoin" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition">
+                + Add Coins
+            </a>
         </div>
-        <a href="/addcoin"
-            class="mr-3 bg-gradient-to-r from-blue-500 to-blue-900 text-white rounded-lg px-3 py-1">+ Add
-            Coins</a>
     </div>
 
-    <div class="m-3 text-white mt-3 mb-24 border border-zinc-800 rounded-lg p-1">
-
-        <div class=" p-3">
-            <a href="" class="flex justify-between items-center">
-                <div class="flex items-center gap-5">
-                    <div class="border border-zinc-800  rounded-2xl p-2 text-green-600"><svg
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15 8.25H9m6 3H9m3 6-3-3h1.5a3 3 0 1 0 0-6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+    <!-- Menu Options -->
+    <div class="container mx-auto px-4 mt-6 pb-24">
+        <div class="bg-zinc-900/50 border border-zinc-800 rounded-xl divide-y divide-zinc-800">
+            <!-- Wallet -->
+            <a href="/wallet" class="flex items-center justify-between p-4 hover:bg-zinc-800/50 transition">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-zinc-800 rounded-lg text-green-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 8.25H9m6 3H9m3 6-3-3h1.5a3 3 0 1 0 0-6M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
                         </svg>
-
                     </div>
-                    <div class="">
-                        <h1 class="text-lg font-semibold">Wallet</h1>
-                        <h2 class="text-zinc-400 tracking-tighter">View your wallet details</h2>
+                    <div>
+                        <h3 class="text-base font-semibold">Wallet</h3>
+                        <p class="text-xs text-zinc-400">View your wallet details</p>
                     </div>
                 </div>
-
-                <div class=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg>
-                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-zinc-400">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
             </a>
-        </div>
 
-        <hr class="h-[1px] border-none outline-none bg-zinc-800 mx-3"> 
-        <div class=" p-3">
-            <a href="" class="flex justify-between items-center">
-                <div class="flex items-center gap-5">
-                    <div class="border border-zinc-800  rounded-2xl p-2 text-green-600"><svg
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Zm3.75 11.625a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
+            <!-- Hosted Tournaments -->                
+            <a href="/hostedTournaments" class="flex items-center justify-between p-4 hover:bg-zinc-800/50 transition">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-zinc-800 rounded-lg text-green-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m5.231 13.481L15 17.25m-4.5-15H5.625c-.621 0-1.125.504-1.125 1.125v16.5c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Zm3.75 11.625a2.625 2.625 0 1 1-5.25 0 2.625 2.625 0 0 1 5.25 0Z" />
                         </svg>
-
-
                     </div>
-                    <div class="">
-                        <h1 class="text-lg font-semibold">Hosted Tournaments</h1>
-                        <h2 class="text-zinc-400 tracking-tighter">View tournament details hosted by you</h2>
+                    <div>
+                        <h3 class="text-base font-semibold">Hosted Tournaments</h3>
+                        <p class="text-xs text-zinc-400">View tournament details hosted by you</p>
                     </div>
                 </div>
-
-                <div class=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg>
-                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-zinc-400">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
             </a>
-        </div>
 
-        <hr class="h-[1px] border-none outline-none bg-zinc-800 mx-3">
-
-
-        <div class=" p-3">
-            <a href="/leaderboard" class="flex justify-between items-center">
-                <div class="flex items-center gap-5">
-                    <div class="border border-zinc-800  rounded-2xl p-2 text-blue-600"><svg
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+            <!-- Leaderboard -->
+            <a href="/leaderboard" class="flex items-center justify-between p-4 hover:bg-zinc-800/50 transition">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-zinc-800 rounded-lg text-blue-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                         </svg>
-
                     </div>
-                    <div class="">
-                        <h1 class="text-lg font-semibold">Leader Board</h1>
-                        <h2 class="text-zinc-400 tracking-tighter">Explore the Players With Highest Coins</h2>
+                    <div>
+                        <h3 class="text-base font-semibold">Leaderboard</h3>
+                        <p class="text-xs text-zinc-400">Explore the players with highest coins</p>
                     </div>
                 </div>
-
-                <div class=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg>
-                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-zinc-400">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
             </a>
-        </div>
 
-        <hr class="h-[1px] border-none outline-none bg-zinc-800 mx-3">
-        <div class=" p-3">
-            <a href="/Auth/user/logout" class="flex justify-between items-center">
-                <div class="flex items-center gap-5">
-                    <div class="border border-zinc-800  rounded-2xl p-2 text-red-600"><svg
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
+            <!-- Legal -->
+            <a href="/legal" class="flex items-center justify-between p-4 hover:bg-zinc-800/50 transition">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-zinc-800 rounded-lg text-red-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 21v-8.25M15.75 21v-8.25M8.25 21v-8.25M3 9l9-6 9 6m-1.5 12V10.332A48.36 48.36 0 0 0 12 9.75c-2.551 0-5.056.2-7.5.582V21M3 21h18M12 6.75h.008v.008H12V6.75Z" />
                         </svg>
-
                     </div>
-                    <div class="">
-                        <h1 class="text-lg font-semibold">Legal</h1>
-                        <h2 class="text-zinc-400 tracking-tighter">Check policies,etc</h2>
+                    <div>
+                        <h3 class="text-base font-semibold">Legal</h3>
+                        <p class="text-xs text-zinc-400">Check policies, etc.</p>
                     </div>
                 </div>
-
-                <div class=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg>
-                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-zinc-400">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
             </a>
-        </div>
 
-        <hr class="h-[1px] border-none outline-none bg-zinc-800 mx-3">
-
-        <div class=" p-3">
-            <a href="/Auth/user/logout" class="flex justify-between items-center">
-                <div class="flex items-center gap-5">
-                    <div class="border border-zinc-800  rounded-2xl p-2 text-red-600"><svg
-                            xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                            stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round"
-                                d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
+            <!-- Logout -->
+            <a href="/Auth/user/logout" class="flex items-center justify-between p-4 hover:bg-zinc-800/50 transition">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-zinc-800 rounded-lg text-red-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0 0 13.5 3h-6a2.25 2.25 0 0 0-2.25 2.25v13.5A2.25 2.25 0 0 0 7.5 21h6a2.25 2.25 0 0 0 2.25-2.25V15m3 0 3-3m0 0-3-3m3 3H9" />
                         </svg>
                     </div>
-                    <div class="">
-                        <h1 class="text-lg font-semibold">Logout</h1>
-                        <h2 class="text-zinc-400 tracking-tighter">Log out of your account</h2>
+                    <div>
+                        <h3 class="text-base font-semibold">Logout</h3>
+                        <p class="text-xs text-zinc-400">Log out of your account</p>
                     </div>
                 </div>
-
-                <div class=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                        stroke="currentColor" class="size-6">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
-                    </svg>
-                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-zinc-400">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
             </a>
-        </div>
 
-
-
-        <%if (user.isAdmin) { %>
-            <hr class="h-[1px] border-none outline-none bg-zinc-800 mx-3">
-            <div class=" p-3">
-                <a href="/Admin" class="flex justify-between items-center">
-                    <div class="flex items-center gap-5">
-                        <div class="border border-zinc-800  rounded-2xl p-2 text-green-600"><svg
-                                xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                                stroke="currentColor" class="size-6">
-                                <path stroke-linecap="round" stroke-linejoin="round"
-                                    d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
-                            </svg>
-
-                        </div>
-                        <div class="">
-                            <h1 class="text-lg font-semibold">Admin Panel</h1>
-                            <h2 class="text-zinc-400 tracking-tighter">Special Access to Authorized users.</h2>
-                        </div>
-                    </div>
-
-                    <div class=""><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                            stroke-width="1.5" stroke="currentColor" class="size-6">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+            <% if (user.isAdmin) { %>
+            <!-- Admin Panel -->
+            <a href="/Admin" class="flex items-center justify-between p-4 hover:bg-zinc-800/50 transition">
+                <div class="flex items-center gap-4">
+                    <div class="p-2 bg-zinc-800 rounded-lg text-green-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12c0 1.268-.63 2.39-1.593 3.068a3.745 3.745 0 0 1-1.043 3.296 3.745 3.745 0 0 1-3.296 1.043A3.745 3.745 0 0 1 12 21c-1.268 0-2.39-.63-3.068-1.593a3.746 3.746 0 0 1-3.296-1.043 3.745 3.745 0 0 1-1.043-3.296A3.745 3.745 0 0 1 3 12c0-1.268.63-2.39 1.593-3.068a3.745 3.745 0 0 1 1.043-3.296 3.746 3.746 0 0 1 3.296-1.043A3.746 3.746 0 0 1 12 3c1.268 0 2.39.63 3.068 1.593a3.746 3.746 0 0 1 3.296 1.043 3.746 3.746 0 0 1 1.043 3.296A3.745 3.745 0 0 1 21 12Z" />
                         </svg>
                     </div>
+                    <div>
+                        <h3 class="text-base font-semibold">Admin Panel</h3>
+                        <p class="text-xs text-zinc-400">Special access for authorized users</p>
+                    </div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-5 text-zinc-400">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m8.25 4.5 7.5 7.5-7.5 7.5" />
+                </svg>
+            </a>
+            <% } %>
+        </div>
+    </div>
+
+    <!-- Bottom Navigation -->
+    <footer class="fixed bottom-0 left-0 right-0 bg-zinc-900/80 backdrop-blur-sm border-t border-zinc-800 py-3 z-50">
+        <div class="container mx-auto px-4">
+            <div class="flex justify-around">
+                <a href="/home" class="p-2 text-zinc-300 hover:text-white transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    </svg>
+                </a>
+                <a href="/wallet" class="p-2 text-zinc-300 hover:text-white transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
+                    </svg>
+                </a>
+                <a href="/createTournament" class="p-2 text-zinc-300 hover:text-white transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                </a>
+                <a href="/worldChat" class="p-2 text-zinc-300 hover:text-white transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
+                    </svg>
+                </a>
+                <a href="/profile" class="p-2 text-white bg-blue-600 rounded-lg transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    </svg>
                 </a>
             </div>
-            <%}%>
-    </div>
-
-
-    <footer class="fixed bottom-0 left-0 right-0 flex justify-around bg-[#050506] py-2 z-50 border-t border-white/20">
-        <!-- Home -->
-        <a href="/home" class="w-12 h-12 text-zinc-300 flex items-center justify-center  rounded-xl">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
-            </svg>
-        </a>
-
-        <!-- Wallet -->
-        <a href="/wallet" class="w-12 h-12 rounded-xl text-zinc-300 flex items-center justify-center ">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 0 0 2.25-2.25V6.75A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25v10.5A2.25 2.25 0 0 0 4.5 19.5Z" />
-            </svg>
-        </a>
-
-        <a href="/createTournament" class="w-12 h-12 rounded-xl text-zinc-300 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-            </svg>
-
-        </a>
-
-        <!-- World Chat -->
-        <a href="/worldChat" class="w-12 h-12 rounded-xl  text-zinc-300 flex items-center justify-center">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253m0 0A17.919 17.919 0 0 1 12 16.5c-3.162 0-6.133-.815-8.716-2.247m0 0A9.015 9.015 0 0 1 3 12c0-1.605.42-3.113 1.157-4.418" />
-            </svg>
-        </a>
-
-        <!-- Profile -->
-        <a href="/profile" class="w-12 h-12 rounded-xl text-zinc-300 flex items-center justify-center bg-white/20">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="size-6">
-                <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-            </svg>
-        </a>
+        </div>
     </footer>
 </body>
-
 </html>
